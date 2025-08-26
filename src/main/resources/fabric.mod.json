@@ -1,25 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "wynnlodgrabber",
+  "id": "aclodgrabber",
   "version": "${version}",
-  "name": "WynnLODGrabber",
-  "description": "",
+  "name": "ACLODGrabber",
+  "description": "A LODs downloader for ArdaCraft.",
   "authors": [
-    "DrBiznes"
+    "JayemCeekay"
   ],
   "contact": {
-    "issues": "https://github.com/DrBiznes/WynnLODGrabber/issues"
+    "homepage": "https://www.ardacraft.me",
+    "issues": "https://discord.com/invite/qcYBkCmAKZ"
   },
   "license": "MIT",
-  "icon": "assets/wynnlodgrabber/icon.png",
+  "icon": "assets/aclodgrabber/icon.png",
   "environment": "client",
   "entrypoints": {
     "main": [
-      "me.jamino.wynnlodgrabber.Wynnlodgrabber"
+      "mc.ardacraft.aclodgrabber.ACLODGrabber"
+    ],
+    "client": [
+      "mc.ardacraft.aclodgrabber.ACLODGrabber"
     ]
   },
   "mixins": [
-    "wynnlodgrabber.mixins.json"
+    "aclodgrabber.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

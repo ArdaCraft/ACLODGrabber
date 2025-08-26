@@ -25,11 +25,9 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation 'com.google.code.gson:gson:2.10.1'
-
-    // Wynntils dependency
-    modImplementation files("libs/wynntils-3.0.3-fabric+MC-1.21.4.jar")
-
+    implementation(include('org.jsoup:jsoup:1.16.1'))
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
 }
 
 processResources {
