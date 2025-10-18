@@ -30,7 +30,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ACLODGrabber implements ModInitializer, ClientModInitializer {
-    private static final String LODS_DOWNLOAD_URL = "http://mc.ardacraft.me:25564/AC_LODS_#.zip";
+    private static final String LODS_DOWNLOAD_URL = "http://lods.ardacraft.me/Distant_Horizons_server_data.zip";
     private static final String DH_FOLDER = "Distant_Horizons_server_data";
     public static final Logger LOGGER = LoggerFactory.getLogger("aclodgrabber");
 
