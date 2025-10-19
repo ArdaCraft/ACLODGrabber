@@ -161,15 +161,25 @@ public class ACLODGrabber implements ModInitializer, ClientModInitializer {
     }
 
     private int determineLatestVersionFromServer() {
-        String serverUrl = "http://mc.ardacraft.me:25564/"; // Base URL of the file server
-        String latestFileName = fetchLatestFileName(serverUrl);
-
-        if (latestFileName != null) {
-            return extractVersionNumber(latestFileName); // Extract the version number from the file name
+        try {
+            URL url = new URL(LODS_DOWNLOAD_URL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("HEAD");
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            
+            int responseCode = connection.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                LOGGER.info("LOD file is available, returning version 1");
+                return 1;
+            } else {
+                LOGGER.warn("LOD file not available, response code: " + responseCode);
+                return -1;
+            }
+        } catch (Exception e) {
+            LOGGER.error("Error checking LOD file availability: " + e.getMessage());
+            return -1;
         }
-
-        LOGGER.warn("Could not determine the latest version. Returning -1.");
-        return -1; // If no valid file is found, return -1
     }
 
     private String fetchLatestFileName(String serverUrl) {
@@ -276,7 +286,11 @@ public class ACLODGrabber implements ModInitializer, ClientModInitializer {
     private void unzipFile(Path zipFile, Path targetDir) throws IOException {
         try (ZipFile zip = new ZipFile(zipFile.toFile())) {
             zip.getEntries().asIterator().forEachRemaining(entry -> {
-                Path outputPath = targetDir.resolve(entry.getName());
+                String entryName = entry.getName();
+                if (entryName.startsWith("Distant_Horizons_server_data/")) {
+                    entryName = entryName.substring("Distant_Horizons_server_data/".length());
+                }
+                Path outputPath = targetDir.resolve(entryName);
 
                 if (entry.isDirectory()) {
                     try {
@@ -382,11 +396,15 @@ public class ACLODGrabber implements ModInitializer, ClientModInitializer {
                             status = "Downloading: " + progress + "%";
                         }
 
+                        final long finalDownloadedBytes = downloadedBytes;
+                        final long finalFileSize = fileSize;
+                        final int finalProgress = progress;
+                        final String finalStatus = status;
 
                         // Update progress in DownloadProgressScreen
                         client.execute(() -> {
                             if (client.currentScreen instanceof DownloadProgressScreen dps) {
-                                dps.setProgress(progress, status);
+                                dps.setProgress(finalProgress, finalStatus, finalDownloadedBytes, finalFileSize);
                             }
                         });
                     }

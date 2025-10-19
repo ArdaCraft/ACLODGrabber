@@ -6,6 +6,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.util.Formatting;
 
 public class LodPromptScreen extends Screen {
     private final Screen parent;
@@ -101,6 +102,17 @@ public class LodPromptScreen extends Screen {
 
         // Render buttons
         super.render(context, mouseX, mouseY, delta);
+        
+        int buttonY = height / 2 + 20;
+        int messageY = buttonY + 30;
+        
+        context.drawCenteredTextWithShadow(
+                textRenderer,
+                Text.literal("You need at least 10GB of spare space on your drive to install the LODs.").formatted(Formatting.YELLOW),
+                width / 2,
+                messageY,
+                0xFFFFFF
+        );
     }
 
     @Override
