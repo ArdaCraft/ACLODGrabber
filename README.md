@@ -1,9 +1,36 @@
-## WynnLODGrabber
+# ACLODGrabber
 
-WynnLODGrabber is for Wynncraft modpack makers to allow users to automatically download the server LODs without having to mess with any files themselves. Or if you not making a modpack this is the lazy way to download lods i guess!!!
+ACLODGrabber is a Minecraft Fabric mod that automatically downloads and installs Distant Horizons LOD files specifically for the ArdaCraft server.
 
-### Installation
+## Requirements
 
-WynnLODGrabber is a mod built for the [Fabric Loader](https://fabricmc.net/). It requires [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api), [Wynntills](https://www.curseforge.com/minecraft/mc-mods/cloth-config), and [Distant Horizons](https://modrinth.com/mod/distanthorizons) to be installed separately.
+- [Fabric Loader](https://fabricmc.net/)
+- [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
+- [Distant Horizons](https://modrinth.com/mod/distanthorizons)
 
-# Make sure to change DH Config to "Server Folder Mode: IP Only" (under multiplayer in DH settings) and connect to play.wynncraft.com
+## Usage
+
+The mod will automatically check for LOD updates when you start Minecraft. If new LODs are available, you'll see a prompt asking if you'd like to download them.
+
+### Commands
+
+- `/resetLODs` - Reset the mod's configuration and force a fresh LOD check
+
+## Configuration
+
+The mod creates a configuration file at `config/ACLODGrabber/config.json` with the following settings:
+
+- `lastDownloadTime`: Timestamp of the latest LOD download
+
+## Distant Horizons files
+
+This mod creates a folder at `Distant_Horizons_server_data/Ardacraft` containing Distant Horizons data for the ArdaCraft Server.
+
+## Acknowledgments
+
+- **Forked from [WynnLODGrabber](https://github.com/DrBiznes/WynnLODGrabber)** by DrBiznes
+
+## Links
+
+- [ArdaCraft Website](https://ardacraft.me)
+- [Discord Community](https://discord.gg/qcYBkCmAKZ)

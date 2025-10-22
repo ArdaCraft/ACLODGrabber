@@ -2,5 +2,20 @@
   "screen.aclodgrabber.title": "ArdaCraft LOD Download",
   "screen.aclodgrabber.accept": "Download LODs",
   "screen.aclodgrabber.notnow": "Not Right Now",
-  "screen.aclodgrabber.decline": "Don't Ask Again"
+  "screen.aclodgrabber.space_warning": "You need at least 10GB of spare space on your drive to install the LODs.",
+  "screen.aclodgrabber.update.line1": "There is a new version of the ArdaCraft LODs available.",
+  "screen.aclodgrabber.update.line2": "This will allow you to see much farther across the map.",
+  "screen.aclodgrabber.update.line3": "Would you like to download the updated LODs?",
+  "screen.aclodgrabber.download.title": "Downloading LODs: %d%%",
+  "screen.aclodgrabber.download.cancel": "Cancel",
+  "screen.aclodgrabber.download.retry": "Retry",
+  "screen.aclodgrabber.download.speed": "Speed: %s",
+  "screen.aclodgrabber.download.time_left": "Time left: %s",
+  "screen.aclodgrabber.download.extracting": "Installing LODs, please wait...",
+  "screen.aclodgrabber.download.complete": "Installation complete!",
+  "screen.aclodgrabber.download.failed": "Download failed.",
+  "screen.aclodgrabber.download.learn_more": "Learn more about us: ",
+  "screen.aclodgrabber.download.join_community": "Join our community: ",
+  "command.resetLODs.success": "ACLODGrabber config reset.",
+  "command.resetLODs.error": "This command cannot be run without a server connection."
 }
