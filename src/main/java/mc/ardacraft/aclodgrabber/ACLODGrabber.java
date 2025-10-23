@@ -12,6 +12,7 @@ import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallba
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -176,7 +177,7 @@ public class ACLODGrabber implements ModInitializer, ClientModInitializer {
                                 if (bytesDownloaded >= 0) {
                                     dps.updateDownloadProgress(bytesDownloaded, contentLength);
                                 } else if (extractionProgress >= 0) {
-                                    dps.setProgress(100, Text.translatable("screen.aclodgrabber.download.extracting").getString());
+                                    dps.setProgress(100, "§e" + Text.translatable("screen.aclodgrabber.download.extracting").getString());
                                 }
                             }
                         });

@@ -11,7 +11,7 @@
   "screen.aclodgrabber.download.retry": "Retry",
   "screen.aclodgrabber.download.speed": "Speed: %s",
   "screen.aclodgrabber.download.time_left": "Time left: %s",
-  "screen.aclodgrabber.download.extracting": "Installing LODs, please wait...",
+  "screen.aclodgrabber.download.extracting": "Progress will hang at 100% as LODs install, please wait.",
   "screen.aclodgrabber.download.complete": "Installation complete!",
   "screen.aclodgrabber.download.failed": "Download failed.",
   "screen.aclodgrabber.download.learn_more": "Learn more about us: ",
