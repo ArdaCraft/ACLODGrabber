@@ -32,7 +32,13 @@ public class FileManager {
     }
     
     public static Path getLODsDirectory() {
-        return getMinecraftDirectory().resolve(DH_FOLDER);
+        var dir = getMinecraftDirectory().resolve(DH_FOLDER);
+        try {
+            Files.createDirectories(dir);
+        } catch (IOException e) {
+            LOGGER.error("Failed to create LODs directory: " + dir, e);
+        }
+        return dir;
     }
     
     public static boolean hasExistingLODs() {
@@ -61,7 +67,8 @@ public class FileManager {
         
         Path tempFile = null;
         try {
-            tempFile = Files.createTempFile("aclodgrabber", ".zip");
+            tempFile = Files.createFile(getLODsDirectory().resolve("aclodgrabber.zip"));
+            //tempFile = Files.createTempFile("aclodgrabber", ".zip");
             LOGGER.debug("Created temporary file: {}", tempFile);
             
             try (FileOutputStream fos = new FileOutputStream(tempFile.toFile())) {
