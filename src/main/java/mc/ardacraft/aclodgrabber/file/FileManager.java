@@ -67,6 +67,10 @@ public class FileManager {
         
         Path tempFile = null;
         try {
+            Path temFilePath = getLODsDirectory().resolve("aclodgrabber.zip");
+            if(Files.exists(temFilePath)) {
+                Files.delete(temFilePath);
+            }
             tempFile = Files.createFile(getLODsDirectory().resolve("aclodgrabber.zip"));
             //tempFile = Files.createTempFile("aclodgrabber", ".zip");
             LOGGER.debug("Created temporary file: {}", tempFile);
