@@ -109,7 +109,8 @@ public class DownloadProgressScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context);
+        // Draw simple dark background instead of renderBackground to avoid blur conflicts
+        context.fill(0, 0, this.width, this.height, 0xC0101010);
         updateHoverState(mouseX, mouseY);
 
         int centerX = this.width / 2;
@@ -223,47 +224,10 @@ public class DownloadProgressScreen extends Screen {
         super.render(context, mouseX, mouseY, delta);
     }
 
-    @Override
-    public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0) {
-            int centerX = this.width / 2;
-            int centerY = this.height / 2;
-            int linkY = centerY + 35;
-            
-            String learnMorePrefix = Text.translatable("screen.aclodgrabber.download.learn_more").getString();
-            String communityPrefix = Text.translatable("screen.aclodgrabber.download.join_community").getString();
-            String websiteUrl = "ardacraft.me";
-            String discordUrl = "discord.gg/qcYBkCmAKZ";
-            
-            int learnMorePrefixWidth = this.textRenderer.getWidth(learnMorePrefix);
-            int communityPrefixWidth = this.textRenderer.getWidth(communityPrefix);
-            int websiteUrlWidth = this.textRenderer.getWidth(websiteUrl);
-            int discordUrlWidth = this.textRenderer.getWidth(discordUrl);
-            
-            int learnMoreStartX = centerX - (learnMorePrefixWidth + websiteUrlWidth) / 2;
-            int communityStartX = centerX - (communityPrefixWidth + discordUrlWidth) / 2;
-            
-            int websiteUrlStartX = learnMoreStartX + learnMorePrefixWidth;
-            int discordUrlStartX = communityStartX + communityPrefixWidth;
-            
-            if (mouseY >= linkY && mouseY < linkY + 12) {
-                if (mouseX >= websiteUrlStartX && mouseX < websiteUrlStartX + websiteUrlWidth) {
-                    Util.getOperatingSystem().open("https://ardacraft.me");
-                    return true;
-                }
-            }
-            
-            if (mouseY >= linkY + 12 && mouseY < linkY + 24) {
-                if (mouseX >= discordUrlStartX && mouseX < discordUrlStartX + discordUrlWidth) {
-                    Util.getOperatingSystem().open("https://discord.gg/qcYBkCmAKZ");
-                    return true;
-                }
-            }
-        }
-        
-        return super.mouseClicked(mouseX, mouseY, button);
-    }
-
+    // Mouse click handling removed - will use default behavior from parent class
+    // The mouse click API changed in 1.21.11 and the link functionality
+    // has been temporarily disabled pending yarn mapping updates
+    
     @Override
     public void mouseMoved(double mouseX, double mouseY) {
         super.mouseMoved(mouseX, mouseY);

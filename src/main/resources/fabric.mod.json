@@ -5,7 +5,9 @@
   "name": "ACLODGrabber",
   "description": "A LODs downloader for ArdaCraft.",
   "authors": [
-    "JayemCeekay"
+    "JayemCeekay",
+    "Tapter",
+    "Acen"
   ],
   "contact": {
     "homepage": "https://www.ardacraft.me",

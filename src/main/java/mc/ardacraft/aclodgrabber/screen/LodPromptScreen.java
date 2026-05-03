@@ -39,7 +39,8 @@ public class LodPromptScreen extends Screen {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        renderBackground(context);
+        // Draw simple dark background instead of renderBackground to avoid blur conflicts
+        context.fill(0, 0, this.width, this.height, 0xC0101010);
 
         String[] descriptionLines = getDescriptionLines();
         int lineHeight = 12;
